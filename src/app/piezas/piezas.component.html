@@ -7,37 +7,40 @@
   </div>
   <div class="modal-body">
     //form
-      <div>
+      <div class="was-validated">
           <div class="mb-3">
             <label for="cantidad">Cantidad:</label>
             <div class="col-12">
-              <input type="number" class="form-control" id="cantidad" >
+              <input type="number" class="form-control" id="cantidad" required >
+              <div class="invalid-feedback">Debe llenar el campo</div>
             </div>
           </div>
           <div class="mb-3">
             <label for="descripcion">Descripcion:</label>
             <div class="col-12">
-              <input type="text" class="form-control" id="descripcion"  >
+              <input type="text" class="form-control" id="descripcion" required >
+              <div class="invalid-feedback">Debe llenar el campo</div>
             </div>
           </div>
           <div class="mb-3">
             <label for="precio-unitario">Precio unitario:</label>
             <div class="col-12">
-              <input type="number" class="form-control" id="precio-unitario"  >
+              <input type="number" class="form-control" id="precio-unitario" required >
+              <div class="invalid-feedback">Debe llenar el campo</div>
             </div>
           </div>
           <div class="mb-3">
             <label for="total" >Total:</label>
             <div class="col-12">
-              <input type="number" class="form-control" id="total" >
+              <input type="number" class="form-control" id="total">
             </div>
           </div>
       </div>   
     //form
   </div>
   <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Siguiente <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-      <button type="button" class="btn btn-primary"><i class="fa fa-chevron-left" aria-hidden="true"></i> Atras</button>
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa fa-chevron-left" aria-hidden="true"></i> Atras</button>
+      <button type="button" class="btn btn-primary">Siguiente <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
     </div>
 </div>
    

@@ -4,40 +4,52 @@
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
   </div>
   <div class="modal-body">
-    // form
-      <div class="mb-3">
-          <div><input type="text" class="form-control mb-3" placeholder="Nombre" id="recipient-name"></div>
-          <div><input type="text" class="form-control mb-3" placeholder="Apellido" id="recipient-name"></div>
-          <div><input type="number" class="form-control mb-3" placeholder="Nit" id="recipient-name"></div>
-          <div>
-            <select class="form-select mb-3" aria-label="Default select example" required>
-              <option selected>Seleccionar pais de origen</option>
+      <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+        <div  >
+          <div class="mb-3">
+            <input type="text" class="form-control" [ngClass]="{'is-invalid': checkoutForm.controls['nombre'].invalid || checkoutForm.controls['nombre']?.errors?.required}" placeholder="Nombre" formControlName="nombre" >
+              <div class="invalid-feedback" *ngIf="checkoutForm.controls['nombre']?.errors?.required || checkoutForm.controls['nombre'].invalid ">Debe llenar el campo</div>
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Apellido" formControlName="apellido">
+            <div class="invalid-feedback">Debe llenar el campo</div>
+          </div>
+          <div class="mb-3">
+            <input type="number" class="form-control" placeholder="Nit" formControlName="nit">
+            <div class="invalid-feedback">Debe llenar el campo</div>
+          </div>
+          <div class="mb-3">
+            <select class="form-select " aria-label="Default select example" formControlName="pais" >
+              <option value="">Seleccionar pais de origen</option>
               <option value="1">Colombia</option>
               <option value="2">Panama</option>
               <option value="3">Chile</option>
             </select>
+            <div class="invalid-feedback">Debe seleccionar una opcion</div>
           </div>
-          <div>
-            <select class="form-select mb-3" aria-label="Default select example" required>
-              <option selected>Departamento</option>
+          <div class="mb-3">
+            <select class="form-select" aria-label="Default select example" formControlName="departamento">
+              <option value="">Departamento</option>
               <option value="1">..</option>
               <option value="2">...</option>
               <option value="3">...</option>
             </select>
+            <div class="invalid-feedback">Debe seleccionar una opcion</div>
           </div>
-          <div>
-            <select class="form-select" aria-label="Default select example" required>
-              <option selected>Ciudad</option>
+          <div class="mb-3">
+            <select class="form-select" aria-label="Default select example" formControlName="ciudad">
+              <option value="">Ciudad</option>
               <option value="1">..</option>
               <option value="2">...</option>
               <option value="3">...</option>
             </select>
-          </div>
-        </div>   
-     //form
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-primary">Siguiente <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+            <div class="invalid-feedback">Debe seleccionar una opcion</div>
+          </div>    
+       </div>
+       <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Siguiente <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+      </div>
+    </form>
   </div>
 </div>
 
