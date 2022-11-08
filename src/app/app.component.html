@@ -10,9 +10,11 @@
   
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <app-persona></app-persona>
-      <!-- <app-piezas></app-piezas> -->
-      <!-- <app-resumen></app-resumen> -->
+      <div class="modal-content">
+         <app-persona (ordenOcultar)="recibirOrden($event)" *ngIf="vMista"></app-persona>
+        <app-piezas *ngIf="!(vMista)"></app-piezas>
+        <!-- <app-resumen></app-resumen> -->
+      </div>
     </div>
   </div>
   
@@ -48,3 +50,4 @@
     </div>
   </div>
 </div>
+
