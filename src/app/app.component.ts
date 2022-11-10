@@ -1,5 +1,8 @@
+
 import {Component,ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { PiezasComponent } from './piezas/piezas.component';
+
 
 @Component({
   selector: 'app-root',
@@ -13,7 +16,13 @@ export class AppComponent {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   message:string;
-  vMista:boolean=true;
+  vMistaPersona:boolean=false;
+  vMistaPiezas: boolean=false;
+  atrasPiezas:boolean
+  atrasResumen:boolean
+  lista:any[]=[];
+  
+  
  
 
   constructor(private _formBuilder: FormBuilder) {}
@@ -26,11 +35,33 @@ export class AppComponent {
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
+    
   }
 
-  recibirOrden($event) {
-   console.log("este es el mensaje:", $event)
-   this.vMista=$event
+  recibirOrdenPersona($event) {
+   console.log("este es el mensaje persona:", $event)
+   this.vMistaPersona=$event
   
   }
+
+  recibirOrdenPiezas($event){
+    console.log("este es el mensaje piezas:", $event)
+  this.vMistaPiezas=$event
+  }
+
+  recibirOdenRetrocederResumen($event){
+    console.log("orden de retroceder resumen", $event)
+    if($event==true){
+      this.vMistaPersona=true
+      this.vMistaPiezas=false
+    }
+  }
+
+  recibirOdenRetrocederPiezas($event){
+    console.log("orden de retroceder Piezas", $event)
+    if($event){
+      this.vMistaPersona=false
+    }
+  }
+
 }

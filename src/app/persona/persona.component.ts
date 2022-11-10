@@ -1,5 +1,9 @@
+
 import { Component,Output, EventEmitter, OnInit } from '@angular/core';
-import { FormBuilder, Validators, } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators, } from '@angular/forms';
+import * as Paises from '../../app/data/paises.json'
+import * as Departamentos from '../../app/data/departamentos.json'
+import * as Ciudades from '../../app/data/ciudades.json'
 
 
 
@@ -11,15 +15,24 @@ import { FormBuilder, Validators, } from '@angular/forms';
   
 })
 export class PersonaComponent implements OnInit {
-    ocultarFormP: boolean= true;
-    items: any;
-    checkoutForm: any;
-    message: string = "Hola Mundo!"
-    
-    @Output() ordenOcultar = new EventEmitter<boolean>();
+  ocultarFormPersona: boolean= true;
+  items: any;
+  checkoutForm: FormGroup;
+  message: string = "Hola Mundo!"
+  submitted: boolean = false;
+  @Output() ordenOcultarPersona = new EventEmitter<boolean>();
+  paises: any = Paises
+  jPaises:any =this.paises.default
+  departamentos: any = Departamentos
+  jDepartamentos: any = this.departamentos.default
+  ciudades: any = Ciudades
+  jCiudades: any = this.ciudades.default
+  arrayDepartamentos: any
 
 
-  constructor(private formBuilder: FormBuilder,) { 
+  constructor(private formBuilder: FormBuilder) {}
+
+  ngOnInit() {
     this.checkoutForm = this.formBuilder.group({
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
@@ -30,26 +43,31 @@ export class PersonaComponent implements OnInit {
       tipoDeDireccion:['', Validators.required],
       descripcionDireccion:['', Validators.required],
     });
+    console.log("json paises", this.jPaises)
+    console.log("json departamentos", this.jDepartamentos)
+    console.log("json ciudades", this.jCiudades)
     
   }
 
-  ngOnInit() {
-    let calle = "4b5"
-    let cra = "1c sur"
-    let complemento = "83"
-
-    let direccion = "calle" + calle + "#" + cra + " - " + complemento
-  }
 
   onSubmit(customerData: any) {
-    console.log('si esta valido', this.checkoutForm.valid )
+    this.submitted = true;
+    console.log('si esta valido personas?', this.checkoutForm.valid )
     if (this.checkoutForm.valid) {
-      this.ocultarFormP= false
-      this.ordenOcultar.emit(this.ocultarFormP)
+      this.submitted = false;
+      this.ocultarFormPersona= true
+      this.ordenOcultarPersona.emit(this.ocultarFormPersona)
     }
-   
 
   }
+  
+  filtrarDepartamento(){
+    console.log("valor de pais",this.checkoutForm.controls['pais'].value)
+    this.arrayDepartamentos = this.jDepartamentos.filter((i:any) => i.idPais === parseInt(this.checkoutForm.controls['pais'].value))
+    console.log(this.arrayDepartamentos )
+    
+  }
+
 }
 
 interface paises {

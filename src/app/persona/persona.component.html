@@ -5,58 +5,59 @@
       <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
         <div  >
           <div class="mb-3">
-            <input type="text" class="form-control" [ngClass]="{'is-invalid': checkoutForm.controls['nombre'].invalid || checkoutForm.controls['nombre']?.errors?.required}" placeholder="Nombre" formControlName="nombre" >
-            <div class="invalid-feedback" *ngIf="checkoutForm.controls['nombre']?.errors?.required || checkoutForm.controls['nombre'].invalid ">Debe llenar el campo</div>
+            <input type="text" class="form-control" formControlName="nombre" [ngClass]="{'is-invalid': submitted && checkoutForm.get('nombre').hasError('required') }" placeholder="Nombre" >
+              <div class="invalid-feedback" *ngIf="checkoutForm.get('nombre').hasError('required')">Debe llenar el campo</div>
           </div>
           <div class="mb-3">
-            <input type="text" class="form-control" [ngClass]="{'is-invalid': checkoutForm.controls['apellido'].invalid || checkoutForm.controls['apellido']?.errors?.required}" placeholder="Apellido" formControlName="apellido">
-            <div class="invalid-feedback" *ngIf="checkoutForm.controls['apellido']?.errors?.required || checkoutForm.controls['apellido'].invalid " >Debe llenar el campo</div>
+            <input type="text" class="form-control" [ngClass]="{'is-invalid': submitted && checkoutForm.get('apellido').hasError('required') }" placeholder="Apellido" formControlName="apellido">
+            <div class="invalid-feedback" *ngIf="checkoutForm.get('apellido').hasError('required')">Debe llenar el campo</div>
           </div>
           <div class="mb-3">
-            <input type="number" class="form-control" [ngClass]="{'is-invalid': checkoutForm.controls['nit'].invalid || checkoutForm.controls['nit']?.errors?.required}" placeholder="Nit" formControlName="nit">
-            <div class="invalid-feedback" *ngIf="checkoutForm.controls['nit']?.errors?.required || checkoutForm.controls['nit'].invalid" >Debe llenar el campo</div>
+            <input type="text" class="form-control" [ngClass]="{'is-invalid': submitted && checkoutForm.get('nit').hasError('required') }" placeholder="Nit" formControlName="nit">
+            <div class="invalid-feedback" *ngIf="checkoutForm.get('nit').hasError('required')" >Debe llenar el campo</div>
           </div>
           <div class="mb-3">
-            <select class="form-select " [ngClass]="{'is-invalid': checkoutForm.controls['pais'].invalid || checkoutForm.controls['pais']?.errors?.required}" aria-label="Default select example" formControlName="pais" >
-              <option value="">Seleccionar pais de origen</option>
-              <option value="1">1111</option>
-              <option value="2">Panama</option>
-              <option value="3">Chile</option>
+            <select class="form-select" (change)="filtrarDepartamento()" [ngClass]="{'is-invalid': submitted && checkoutForm.get('pais').hasError('required') }" aria-label="Default select example" formControlName="pais" >
+              <option value="" >Seleccionar pais de origen</option>
+              <option [value]="pais.idPais" *ngFor="let pais of jPaises">{{pais.descripcion}}</option>
             </select>
-            <div class="invalid-feedback" *ngIf="checkoutForm.controls['pais']?.errors?.required || checkoutForm.controls['pais'].invalid">Debe seleccionar una opcion</div>
+            <div class="invalid-feedback" *ngIf="checkoutForm.get('pais').hasError('required')" >Debe seleccionar una opcion</div>
           </div>
           <div class="mb-3">
-            <select class="form-select" formControlName="departamento" aria-label="Default select example" [ngClass]="{'is-invalid': checkoutForm.controls['departamento'].invalid || checkoutForm.controls['departamento']?.errors?.required}">
+            <select class="form-select" (change)="guardarDepartamento(departamento)" formControlName="departamento" aria-label="Default select example" [ngClass]="{'is-invalid': submitted && checkoutForm.get('departamento').hasError('required') }">
               <option value="">Departamento</option>
-              <option value="1">..</option>
+              <option [value]="departamento" *ngFor="let departamento of jDepartamentos">{{arrayDepartamentos}}</option>
             </select>
-            <div class="invalid-feedback" *ngIf="checkoutForm.controls['departamento']?.errors?.required || checkoutForm.controls['departamento'].invalid">Debe seleccionar una opcion</div>
+            <div class="invalid-feedback" *ngIf="checkoutForm.get('departamento').hasError('required')">Debe seleccionar una opcion</div>
           </div>
           <div class="mb-3">
-            <select class="form-select" aria-label="Default select example" [ngClass]="{'is-invalid': checkoutForm.controls['ciudad'].invalid || checkoutForm.controls['ciudad']?.errors?.required}" formControlName="ciudad">
+            <select class="form-select" (change)="guardarCiudad(ciudad)" aria-label="Default select example" [ngClass]="{'is-invalid': submitted && checkoutForm.get('ciudad').hasError('required') }" formControlName="ciudad">
               <option value="">Ciudad</option>
-              <option value="1">..</option>
-              <option value="2">...</option>
-              <option value="3">...</option>
+              <option [value]="ciudad" *ngFor="let ciudad of jCiudades">{{ciudad.descripcion}}</option>
             </select>
-            <div class="invalid-feedback" *ngIf="checkoutForm.controls['ciudad']?.errors?.required || checkoutForm.controls['ciudad'].invalid">Debe seleccionar una opcion</div>
+            <div class="invalid-feedback" *ngIf="checkoutForm.get('ciudad').hasError('required')" >Debe seleccionar una opcion</div>
           </div>    
           <div class="mb-3">
-            <select class="form-select" aria-label="Default select example" [ngClass]="{'is-invalid': checkoutForm.controls['tipoDeDireccion'].invalid || checkoutForm.controls['tipoDeDireccion']?.errors?.required}" formControlName="tipoDeDireccion">
+            <select class="form-select" aria-label="Default select example" [ngClass]="{'is-invalid': submitted && checkoutForm.get('tipoDeDireccion').hasError('required') }" formControlName="tipoDeDireccion">
               <option value="">Tipo de direccion </option>
-              <option value="1">..</option>
-              <option value="2">...</option>
-              <option value="3">...</option>
+              <option value="1">Calle</option>
+              <option value="2">Carrera</option>
+              <option value="3">Diagonal</option>
+              <option value="3">Avenida</option>
+              <option value="3">Bulevar</option>
+              <option value="3">Autopista</option>
+              <option value="3">Esquina</option>
+              <option value="3">Transversal</option>
             </select>
-            <div class="invalid-feedback" *ngIf="checkoutForm.controls['tipoDeDireccion']?.errors?.required || checkoutForm.controls['tipoDeDireccion'].invalid">Debe seleccionar una opcion</div>
-          </div>  
-          <div class="mb-3">
-            <input type="text" class="form-control" [ngClass]="{'is-invalid': checkoutForm.controls['descripcionDireccion'].invalid || checkoutForm.controls['descripcionDireccion']?.errors?.required}" placeholder="Describe tu direccion" formControlName="descripcionDireccion" >
-            <div class="invalid-feedback" *ngIf="checkoutForm.controls['descripcionDireccion']?.errors?.required || checkoutForm.controls['descripcionDireccion'].invalid ">Debe llenar el campo</div>
+            <div class="invalid-feedback" *ngIf="checkoutForm.get('tipoDeDireccion').hasError('required')">Debe seleccionar una opcion</div>
+          </div>
+           <div class="mb-3"> 
+            <input type="text" class="form-control" [ngClass]="{'is-invalid': submitted && checkoutForm.get('descripcionDireccion').hasError('required') }" placeholder="Describe tu direccion" formControlName="descripcionDireccion" >
+            <div class="invalid-feedback" *ngIf="checkoutForm.get('descripcionDireccion').hasError('required')">Debe llenar el campo</div>
           </div> 
        </div>
        <div class="modal-footer">
-        <button type="submit" class="btn btn-primary"  >Siguiente <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+        <button type="submit" class="btn btn-primary" >Siguiente <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
       </div>
     </form>
   </div>

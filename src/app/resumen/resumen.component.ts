@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-resumen',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./resumen.component.css']
 })
 export class ResumenComponent implements OnInit {
+  retrocederResumen: boolean = true;
+  @Output() ordenRetrocederResumen = new EventEmitter<boolean>()
 
-  constructor() { }
+ 
 
   ngOnInit() {
   }
+  
+  retrocederResumenAPiezas(){
+    this.ordenRetrocederResumen.emit(this.retrocederResumen)
 
+  }
 }

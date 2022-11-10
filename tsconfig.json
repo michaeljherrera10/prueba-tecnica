@@ -1,6 +1,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "resolveJsonModule": true, //para llamar un json//
+    "esModuleInterop": true,   //para llamar un json//
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
@@ -23,4 +25,5 @@
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
   }
+  
 }

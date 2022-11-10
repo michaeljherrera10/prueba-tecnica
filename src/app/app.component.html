@@ -11,9 +11,9 @@
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-         <app-persona (ordenOcultar)="recibirOrden($event)" *ngIf="vMista"></app-persona>
-        <app-piezas *ngIf="!(vMista)"></app-piezas>
-        <!-- <app-resumen></app-resumen> -->
+         <app-persona (ordenOcultarPersona)="recibirOrdenPersona($event)" *ngIf="!(vMistaPersona)"></app-persona>
+        <app-piezas (ordenOcultarPiezas)="recibirOrdenPiezas($event)" (ordenRetrocederPiezas)="recibirOdenRetrocederPiezas($event)" *ngIf="(vMistaPersona && vMistaPiezas==false) "></app-piezas>
+        <app-resumen (ordenRetrocederResumen)="recibirOdenRetrocederResumen($event)" *ngIf="(vMistaPersona && vMistaPiezas)" ></app-resumen>
       </div>
     </div>
   </div>
@@ -34,16 +34,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row"></th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+          <tr *ngFor="let data of lista; let i = index">
+            <th scope="row">{{ i + 1}}</th>
+            <td>{{data.nombre}}</td>
+            <td>{{data.apellido}}</td>
+            <td>{{data.nit}}</td>
+            <td>{{data.cantidadPiezas}}</td>
+            <td>{{data.precioUnitario}}</td>
+            <td>{{data.total}}</td>
+            <td><a href="#" data-bs-toggle="modal"  data-bs-target="#exampleModal" ><i class="fa fa-pencil" title="Editar"   aria-hidden="true"></i></a>  <a href="#"  ><i class="fa fa-trash" title="Borrar" aria-hidden="true"></i></a></td>
           </tr>
         </tbody>
       </table>
