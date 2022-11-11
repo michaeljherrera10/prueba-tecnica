@@ -20,9 +20,15 @@ export class ResumenComponent implements OnInit {
   jDepartamentos: any = this.departamentos.default;
   ciudades: any = Ciudades;
   jCiudades: any = this.ciudades.default;
+  pais: any
+  departamento: any
+  ciudad: any
+  
+
  
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.obtenerNombre(this.resumen.pais, this.resumen.departamento, this.resumen.ciudad)
   }
   
   retrocederResumenAPiezas(){
@@ -39,11 +45,11 @@ export class ResumenComponent implements OnInit {
  }
 
  obtenerNombre(idPais, idDepartamento, idCiudad){
-  let pais = this.jPaises.find(pais => pais.idPais == idPais)
-  let departamento=this.jDepartamentos.find(departamento => departamento.idDepartamento == idDepartamento)
-  let cuidad=this.jCiudades.find(ciudad => ciudad.idCiudad == idCiudad)
+  this.pais = this.jPaises.find(pais => pais.idPais == idPais)
+  this.departamento = this.jDepartamentos.find(departamento => departamento.idDepartamento == idDepartamento)
+  this.ciudad =this.jCiudades.find(ciudad => ciudad.idCiudad == idCiudad)
 
-  console.log("obtenernombre", pais)
+  console.log("obtenernombre", this.pais)
  }
 
 }

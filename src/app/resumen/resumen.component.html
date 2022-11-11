@@ -1,75 +1,75 @@
 
 <div >
-    <div class="modal-body"> 
-        <div><h1 class="modal-title fs-5" id="exampleModalLabel">Resumen</h1></div>
+    <div class="modal-body mx-3"> 
+        <div><label class="col-12 modal-title fs-4 border-bottom " id="exampleModalLabel">Paso #3 - Resumen</label></div>
             <div>
-                <div><label>Datos perosnales</label></div>
-                <div class=" row-2 mb-3">
-                    <label>Nombre:</label>
-                    <div class="col-12">
+                <label class="fs-5 pt-2 pb-3 text-center">Datos personales</label>
+                <div class="row">
+                    <div class="col-5"><label>Nombre:</label></div>
+                    <div class="col-5">
                         <span>{{resumen.nombre}}</span>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label>Apellido:</label>
-                    <div class="col-12">
+                <div class="row">
+                    <label class="col-5">Apellido:</label>
+                    <div class="col-5">
                         <span>{{resumen.apellido}}</span>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label>Nit:</label>
-                    <div class="col-12">
+                <div class="row">
+                    <label class="col-5">Nit:</label>
+                    <div class="col-5">
                         <span>{{resumen.nit}}</span>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label>Pais de origen:</label>
-                    <div class="col-12">
-                        <span>{{resumen.pais}}</span>
+                <div class="row">
+                    <label class="col-5">Pais de origen:</label>
+                    <div class="col-5">
+                        <span>{{pais.descripcion}}</span>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label>Deparatamento</label>
-                    <div class="col-12">
-                        <span>{{resumen.deparatamento}}</span>
+                <div class="row">
+                    <label class="col-5">Departamento:</label>
+                    <div class="col-5">
+                        <span>{{departamento.descripcion}}</span>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label>Ciudad</label>
-                    <div class="col-12">
-                        <span>{{resumen.ciudad}}</span>
+                <div class="row">
+                    <label class="col-5">Ciudad:</label>
+                    <div class="col-5">
+                        <span>{{ciudad.descripcion}}</span>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label>Direccion</label>
-                    <div class="col-12">
+                <div class="row">
+                    <label class="col-5">Direccion:</label>
+                    <div class="col-5">
                         <span>{{resumen.tipoDeDireccion}} {{resumen.descripcionDireccion}}</span>
                     </div>
                 </div>
                 <div>
-                    <label>Informacion de piezas</label>
+                    <label class="fs-5 py-3 text-center">Informacion de piezas</label>
                 </div>
-                <div class="mb-3">
-                    <label>Descripcion:</label>
-                    <div class="col-12">
+                <div class="row">
+                    <label class="col-5">Descripcion:</label>
+                    <div class="col-5">
                         <span>{{resumen.descripcionPieza}}</span>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label>Cantidad de piezas:</label>
-                    <div class="col-12">
+                <div class="row">
+                    <label class="col-5">Cantidad de piezas:</label>
+                    <div class="col-5">
                         <span>{{resumen.cantidad}}</span>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label>Precio unitario:</label>
-                    <div class="col-12">
+                <div class="row">
+                    <label class="col-5">Precio unitario:</label>
+                    <div class="col-5">
                         <span>{{resumen.precioUnitario}}</span>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label>Total:</label>
-                    <div class="col-12">
+                <div class="row pb-3">
+                    <label class="col-5">Total:</label>
+                    <div class="col-5">
                         <span>{{resumen.total}}</span>
                     </div>
                 </div>

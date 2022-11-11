@@ -1,6 +1,6 @@
 <div>
   <div class="modal-body">
-    <div> <h1 class="modal-title fs-5" id="exampleModalLabel">Datos personales</h1></div>
+    <div><label class="modal-title fs-4 pb-3 " id="exampleModalLabel">Paso #1 - Datos personales</label></div>
       <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
         <div  >
           <div class="mb-3">
@@ -17,7 +17,7 @@
           </div>
           <div class="mb-3">
             <select class="form-select" (change)="filtrarDepartamento()" [ngClass]="{'is-invalid': submitted && checkoutForm.get('pais').hasError('required') }" aria-label="Default select example" formControlName="pais" >
-              <option value="" >Seleccionar pais de origen</option>
+              <option value="">Seleccionar pais de origen</option>
               <option [value]="pais.idPais" *ngFor="let pais of jPaises">{{pais.descripcion}}</option>
             </select>
             <div class="invalid-feedback" *ngIf="checkoutForm.get('pais').hasError('required')" >Debe seleccionar una opcion</div>
@@ -39,14 +39,14 @@
           <div class="mb-3">
             <select class="form-select" aria-label="Default select example" [ngClass]="{'is-invalid': submitted && checkoutForm.get('tipoDeDireccion').hasError('required') }" formControlName="tipoDeDireccion">
               <option value="">Tipo de direccion </option>
-              <option value="1">Calle</option>
-              <option value="2">Carrera</option>
-              <option value="3">Diagonal</option>
-              <option value="3">Avenida</option>
-              <option value="3">Bulevar</option>
-              <option value="3">Autopista</option>
-              <option value="3">Esquina</option>
-              <option value="3">Transversal</option>
+              <option value="Calle">Calle</option>
+              <option value="Carrera">Carrera</option>
+              <option value="Diagonal">Diagonal</option>
+              <option value="Avenida">Avenida</option>
+              <option value="Bulevar">Bulevar</option>
+              <option value="Autopista">Autopista</option>
+              <option value="Esquina">Esquina</option>
+              <option value="Transversal">Transversal</option>
             </select>
             <div class="invalid-feedback" *ngIf="checkoutForm.get('tipoDeDireccion').hasError('required')">Debe seleccionar una opcion</div>
           </div>

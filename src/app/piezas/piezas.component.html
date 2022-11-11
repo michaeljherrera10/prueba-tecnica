@@ -2,7 +2,7 @@
 
 <div >
   <div class="modal-body">
-    <div><h1 class="modal-title fs-5" id="exampleModalLabel">Piezas</h1></div>
+    <div><label class="modal-title fs-4 pb-3 " id="exampleModalLabel">Paso #2 - Registro de piezas</label></div>
       <form [formGroup]="checkoutFormPiezas" (ngSubmit)="onSubmit(checkoutFormPiezas.value)">
         <div>
             <div class="mb-3">
@@ -26,10 +26,12 @@
                 <div class="invalid-feedback" *ngIf="checkoutFormPiezas.get('cantidad').hasError('required')">Debe llenar el campo</div>
               </div>
             </div>
-            <div class="mb-3 pt-3">
-              <label for="total" >Total:</label>
-              <div class="col-12 fs-5">
-                <span>{{((checkoutFormPiezas.value).precioUnitario) * ((checkoutFormPiezas.value).cantidad)}}</span>
+            <div class="row py-3">
+              <div class="col-2 fs-4">
+                <label for="total" >Total:</label>
+              </div>
+              <div class="col-6 fs-4">
+                  <span>{{((checkoutFormPiezas.value).precioUnitario) * ((checkoutFormPiezas.value).cantidad)}}</span>
               </div>
             </div>
         </div>   
