@@ -1,5 +1,4 @@
 <div>
-  
   <div class="modal-body">
     <div> <h1 class="modal-title fs-5" id="exampleModalLabel">Datos personales</h1></div>
       <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
@@ -24,16 +23,16 @@
             <div class="invalid-feedback" *ngIf="checkoutForm.get('pais').hasError('required')" >Debe seleccionar una opcion</div>
           </div>
           <div class="mb-3">
-            <select class="form-select" (change)="guardarDepartamento(departamento)" formControlName="departamento" aria-label="Default select example" [ngClass]="{'is-invalid': submitted && checkoutForm.get('departamento').hasError('required') }">
+            <select class="form-select" (change)="filtrarCiudad()" formControlName="departamento" aria-label="Default select example" [ngClass]="{'is-invalid': submitted && checkoutForm.get('departamento').hasError('required') }">
               <option value="">Departamento</option>
-              <option [value]="departamento" *ngFor="let departamento of jDepartamentos">{{arrayDepartamentos}}</option>
+              <option [value]="departamento.idDepartamento" *ngFor="let departamento of arrayDepartamentos">{{departamento.descripcion}}</option>
             </select>
             <div class="invalid-feedback" *ngIf="checkoutForm.get('departamento').hasError('required')">Debe seleccionar una opcion</div>
           </div>
           <div class="mb-3">
-            <select class="form-select" (change)="guardarCiudad(ciudad)" aria-label="Default select example" [ngClass]="{'is-invalid': submitted && checkoutForm.get('ciudad').hasError('required') }" formControlName="ciudad">
+            <select class="form-select"  aria-label="Default select example" [ngClass]="{'is-invalid': submitted && checkoutForm.get('ciudad').hasError('required') }" formControlName="ciudad">
               <option value="">Ciudad</option>
-              <option [value]="ciudad" *ngFor="let ciudad of jCiudades">{{ciudad.descripcion}}</option>
+              <option [value]="ciudad.idCiudad" *ngFor="let ciudad of arrayCiudades">{{ciudad.descripcion}}</option>
             </select>
             <div class="invalid-feedback" *ngIf="checkoutForm.get('ciudad').hasError('required')" >Debe seleccionar una opcion</div>
           </div>    

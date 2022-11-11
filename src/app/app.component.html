@@ -13,7 +13,7 @@
       <div class="modal-content">
          <app-persona (ordenOcultarPersona)="recibirOrdenPersona($event)" *ngIf="!(vMistaPersona)"></app-persona>
         <app-piezas (ordenOcultarPiezas)="recibirOrdenPiezas($event)" (ordenRetrocederPiezas)="recibirOdenRetrocederPiezas($event)" *ngIf="(vMistaPersona && vMistaPiezas==false) "></app-piezas>
-        <app-resumen (ordenRetrocederResumen)="recibirOdenRetrocederResumen($event)" *ngIf="(vMistaPersona && vMistaPiezas)" ></app-resumen>
+        <app-resumen (ordenRetrocederResumen)="recibirOdenRetrocederResumen($event)" [resumen]="objResumen" *ngIf="(vMistaPersona && vMistaPiezas)" ></app-resumen>
       </div>
     </div>
   </div>
@@ -26,6 +26,7 @@
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
             <th scope="col">Nit</th>
+            <th scope="col">Direccion</th>
             <th scope="col">Cantidad de Peizas</th>
             <th scope="col">Descripcion</th>
             <th scope="col">Precio unitario</th>
@@ -39,6 +40,7 @@
             <td>{{data.nombre}}</td>
             <td>{{data.apellido}}</td>
             <td>{{data.nit}}</td>
+            <td>{{data.direccion}}</td>
             <td>{{data.cantidadPiezas}}</td>
             <td>{{data.precioUnitario}}</td>
             <td>{{data.total}}</td>

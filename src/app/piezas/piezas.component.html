@@ -6,13 +6,6 @@
       <form [formGroup]="checkoutFormPiezas" (ngSubmit)="onSubmit(checkoutFormPiezas.value)">
         <div>
             <div class="mb-3">
-              <label for="cantidad">Cantidad:</label>
-              <div class="col-12">
-                <input type="number" class="form-control" [ngClass]="{'is-invalid': submitted && checkoutFormPiezas.get('cantidad').hasError('required') }" formControlName="cantidad">
-                <div class="invalid-feedback" *ngIf="checkoutFormPiezas.get('cantidad').hasError('required')">Debe llenar el campo</div>
-              </div>
-            </div>
-            <div class="mb-3">
               <label for="descripcion">Descripcion:</label>
               <div class="col-12">
                 <input type="text" class="form-control" [ngClass]="{'is-invalid': submitted && checkoutFormPiezas.get('descripcionPieza').hasError('required') }" formControlName="descripcionPieza">
@@ -27,9 +20,16 @@
               </div>
             </div>
             <div class="mb-3">
-              <label for="total" >Total:</label>
+              <label for="cantidad">Cantidad:</label>
               <div class="col-12">
-                <input type="number" class="form-control" formControlName="total">
+                <input type="number" class="form-control" [ngClass]="{'is-invalid': submitted && checkoutFormPiezas.get('cantidad').hasError('required') }" formControlName="cantidad">
+                <div class="invalid-feedback" *ngIf="checkoutFormPiezas.get('cantidad').hasError('required')">Debe llenar el campo</div>
+              </div>
+            </div>
+            <div class="mb-3 pt-3">
+              <label for="total" >Total:</label>
+              <div class="col-12 fs-5">
+                <span>{{((checkoutFormPiezas.value).precioUnitario) * ((checkoutFormPiezas.value).cantidad)}}</span>
               </div>
             </div>
         </div>   

@@ -1,5 +1,5 @@
 
-import {Component,ViewChild} from '@angular/core';
+import {Component,Input,ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { PiezasComponent } from './piezas/piezas.component';
 
@@ -15,15 +15,14 @@ export class AppComponent {
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  message:string;
-  vMistaPersona:boolean=false;
-  vMistaPiezas: boolean=false;
-  atrasPiezas:boolean
-  atrasResumen:boolean
-  lista:any[]=[];
+  message: string;
+  vMistaPersona: boolean = false;
+  vMistaPiezas: boolean = false;
+  atrasPiezas: boolean
+  atrasResumen: boolean
+  lista:any[] = [];
+  objResumen: any = {}
   
-  
- 
 
   constructor(private _formBuilder: FormBuilder) {}
 
@@ -36,17 +35,32 @@ export class AppComponent {
       secondCtrl: ['', Validators.required]
     });
     
+    
   }
 
   recibirOrdenPersona($event) {
-   console.log("este es el mensaje persona:", $event)
-   this.vMistaPersona=$event
+    this.vMistaPersona=$event.ocultarPersona
+    this.objResumen.nombre=$event.jsonPersonas.nombre
+    this.objResumen.apellido=$event.jsonPersonas.apellido
+    this.objResumen.nit=$event.jsonPersonas.nit
+    this.objResumen.pais=$event.jsonPersonas.pais
+    this.objResumen.departamento=$event.jsonPersonas.departamento
+    this.objResumen.ciudad=$event.jsonPersonas.ciudad
+    this.objResumen.tipoDeDireccion=$event.jsonPersonas.tipoDeDireccion
+    this.objResumen.descripcionDireccion=$event.jsonPersonas.descripcionDireccion
+    console.log("este es el mensaje persona:",this.objResumen)
   
   }
+  
 
   recibirOrdenPiezas($event){
-    console.log("este es el mensaje piezas:", $event)
-  this.vMistaPiezas=$event
+    this.vMistaPiezas=$event.ocultarPiezas
+    this.objResumen.cantidad=$event.jsonPiezas.cantidad
+    this.objResumen.descripcionPieza=$event.jsonPiezas.descripcionPieza
+    this.objResumen.precioUnitario=$event.jsonPiezas.precioUnitario
+    this.objResumen.total=$event.jsonPiezas.total
+    console.log("este es el mensaje piezas:", this.objResumen)
+   
   }
 
   recibirOdenRetrocederResumen($event){
@@ -64,4 +78,5 @@ export class AppComponent {
     }
   }
 
+  
 }

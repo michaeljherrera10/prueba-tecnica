@@ -3,41 +3,81 @@
     <div class="modal-body"> 
         <div><h1 class="modal-title fs-5" id="exampleModalLabel">Resumen</h1></div>
             <div>
-                <div class="mb-3">
+                <div><label>Datos perosnales</label></div>
+                <div class=" row-2 mb-3">
                     <label>Nombre:</label>
                     <div class="col-12">
-                        <input  class="form-control" >
+                        <span>{{resumen.nombre}}</span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label>Apellido:</label>
+                    <div class="col-12">
+                        <span>{{resumen.apellido}}</span>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label>Nit:</label>
                     <div class="col-12">
-                        <input  class="form-control" >
+                        <span>{{resumen.nit}}</span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label>Pais de origen:</label>
+                    <div class="col-12">
+                        <span>{{resumen.pais}}</span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label>Deparatamento</label>
+                    <div class="col-12">
+                        <span>{{resumen.deparatamento}}</span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label>Ciudad</label>
+                    <div class="col-12">
+                        <span>{{resumen.ciudad}}</span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label>Direccion</label>
+                    <div class="col-12">
+                        <span>{{resumen.tipoDeDireccion}} {{resumen.descripcionDireccion}}</span>
+                    </div>
+                </div>
+                <div>
+                    <label>Informacion de piezas</label>
+                </div>
+                <div class="mb-3">
+                    <label>Descripcion:</label>
+                    <div class="col-12">
+                        <span>{{resumen.descripcionPieza}}</span>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label>Cantidad de piezas:</label>
                     <div class="col-12">
-                        <input  class="form-control" >
+                        <span>{{resumen.cantidad}}</span>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label>Precio unitario:</label>
                     <div class="col-12">
-                        <input class="form-control" >
+                        <span>{{resumen.precioUnitario}}</span>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label>Total:</label>
                     <div class="col-12">
-                        <input class="form-control" >
+                        <span>{{resumen.total}}</span>
                     </div>
                 </div>
             </div>  
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" (click)="retrocederResumenAPiezas()" ><i class="fa fa-chevron-left" aria-hidden="true"></i> Atras</button>
-                <button type="button" class="btn btn-primary">Guardar <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-            </div> 
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="retrocederResumenAPiezas()" ><i class="fa fa-chevron-left" aria-hidden="true"></i> Atras</button>
+            <button type="button" class="btn btn-primary" (click)="guardar()">Guardar <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+        </div> 
     </div>
 </div>
   

@@ -12,12 +12,13 @@ export class PiezasComponent implements OnInit {
   checkoutFormPiezas: FormGroup;
   retrocederPiezas: boolean;
   submitted: boolean = false;
+  total: number
   
   
 
   @Output() ordenOcultarPiezas = new EventEmitter<any>();
   @Output() ordenRetrocederPiezas= new EventEmitter<boolean>()
-  
+ 
 
 
   constructor(private formBuilder: FormBuilder,) { 
@@ -25,7 +26,7 @@ export class PiezasComponent implements OnInit {
       cantidad: ['', Validators.required],
       descripcionPieza: ['', Validators.required],
       precioUnitario:['', Validators.required],
-      total:[''],
+     
     })
   }
 
@@ -34,12 +35,17 @@ export class PiezasComponent implements OnInit {
 
   onSubmit(customerData: any) {
     this.submitted = true;
-    console.log('esta valido el componente piezas?', this.checkoutFormPiezas.valid )
+    
+    console.log('esta valido el componente piezas?', customerData )
     if (this.checkoutFormPiezas.valid) {
+      this.total= customerData.precioUnitario * customerData.cantidad;
+      customerData.total=this.total
       this.submitted = false;
       this.ocultarFormPiezas= true
-      this.ordenOcultarPiezas.emit(this.ocultarFormPiezas)
+      this.ordenOcultarPiezas.emit({ocultarPiezas:this.ocultarFormPiezas, jsonPiezas:customerData})
+
     }
+    
 
     console.warn('Your order has been submitted', customerData);
   }
@@ -47,5 +53,7 @@ export class PiezasComponent implements OnInit {
   retrocederPiezasAPersonas(){
     this.ordenRetrocederPiezas.emit(true)  
   }
+
+ 
 
 }
